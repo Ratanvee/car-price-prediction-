@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car price predict</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+    <div class="card mt-50">
+        <span>
+            <h1>Car Price Prediction</h1>
+        </span>
+
+        <form action="POST" action="#">
+            <div class="col-10 form-group" style="text-align: center;">
+                <label for=""><b>Select Company</b></label>
+                <select class="selectpicker form-control" name="company" id="company" required="1">
+                    {% for car_name in car_names %}
+                    <option value="{{car_name}}">{{car_name}}</option>
+
+                    {% endfor %}
+                </select>
+
+            </div>
+            <div class="col-10 form-group" style="text-align: center;">
+                <label for=""><b>Select Fuel Type</b></label>
+                <select class="selectpicker form-control" name="fuel_type" id="fuel_type" required="1">
+                    {% for car_name in fuel_type %}
+                    <option value="{{car_name}}">{{car_name}}</option>
+
+                    {% endfor %}
+                </select>
+
+            </div>
+            <div class="col-10 form-group" style="text-align: center;">
+                <label for=""><b>Select Transmission</b></label>
+                <select class="selectpicker form-control" name="transmission" id="transmission" required="1">
+                    {% for car_name in transmission %}
+                    <option value="{{car_name}}">{{car_name}}</option>
+
+                    {% endfor %}
+                </select>
+
+            </div>
+            <div class="col-10 form-group" style="text-align: center;">
+                <label for=""><b>Select Ownership</b></label>
+                <select class="selectpicker form-control" name="owner" id="owner" required="1">
+                    {% for car_name in ownership %}
+                    <option value="{{car_name}}">{{car_name}}</option>
+
+                    {% endfor %}
+                </select>
+
+            </div>
+            <div class="col-10 form-group" style="text-align: center;">
+                <label for=""><b>Select Year</b></label>
+                <select class="selectpicker form-control" name="year" id="year" required="1">
+                    {% for car_name in year %}
+                    <option value="{{car_name}}">{{car_name}}</option>
+
+                    {% endfor %}
+                </select>
+
+            </div>
+            <div class="col-10 form-group" style="text-align: center;">
+                <label for=""><b>Select Engine CC</b></label>
+                <select class="selectpicker form-control" name="engine" id="engine" required="1">
+                    {% for car_name in engine %}
+                    <option value="{{car_name}}">{{car_name}}</option>
+
+                    {% endfor %}
+                </select>
+
+            </div>
+            <div class="col-10 form-group" style="text-align: center;">
+                <label for=""><b>Select Seats</b></label>
+                <select class="selectpicker form-control" name="seats" id="seats" required="1">
+                    {% for car_name in Seats %}
+                    <option value="{{car_name}}">{{car_name}}</option>
+
+                    {% endfor %}
+                </select>
+
+            </div>
+            <div class="col-10 form-group" style="text-align: center;">
+                <label for=""><b>Enter kms_driven</b></label>
+                <input type="number" name="kms" id="input" placeholder="Enter KMS Driven">
+            </div>
+            <div class="col-10 form-group" style="text-align: center;">
+                <button class="btn btn-primary form-control" onclick="send_data()">Predict Price</button>
+            </div>
+        </form>
+        <br>
+
+
+        <div class="predict col-12" style="text-align: center;">
+            <h3><span id="prediction"></span></h3>
+        </div>
+
+    </div>
+
+    <script src="static/script/script.js"></script>
+</body>
+
+</html>

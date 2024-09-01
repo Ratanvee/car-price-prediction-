@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    align-items: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    height: 700px;
+}
+
+.card{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    justify-content: center;
+    background-color: #37252552;
+    width: 90%;
+    height: 90%;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 40vw;
+}
+form div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+form div select{
+    width: 40%;
+    background-color: antiquewhite;
+    height: 30px;
+}
+form div input{
+    width: 40%;
+    height: 30px;
+    background-color: antiquewhite;
+}
+form div label{
+    font-size: 20px;
+}
+.card span h1{
+    font-size: 40px;
+}
+form div button{
+    height: 40px;
+    width: 100px;
+    background-color: beige;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 15px;
+}
+button:hover{
+    /* background-color: red; */
+    border: 2px solid red;
+    color: red;
+}
+
+input::selection{
+    background-color: red;
+}
+    
+.predict{
+    bottom: 25px;
+    position: relative;
+    font-size: 30px;
+}
+option::-webkit-scrollbar {
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    form{
+        width: 85vw;
+    }
+
+}
+@media screen and (max-width: 400px) {
+    .card span h1{
+        font-size: 30px;
+    }
+
+    form div label{
+        font-size: 15px;
+    }
+}
