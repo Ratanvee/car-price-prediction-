@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import pandas as pd
 import pickle
 import numpy as np
+import os
 
 app = Flask(__name__)
 
@@ -30,25 +31,11 @@ def predict():
         engine = request.form.get('engine')
         seats = request.form.get('seats')
         kms = request.form.get('kms')
-        
-        # Assuming the model requires numeric or encoded inputs
-        # Encode categorical features if necessary
-        # Example: If your model expects label encoding
-        # car_name_encoded = label_encoder_car_name.transform([car_name])[0]
-        # fuel_type_encoded = label_encoder_fuel_type.transform([fuel_type])[0]
-        # transmission_encoded = label_encoder_transmission.transform([transmission])[0]
-        # owner_encoded = label_encoder_owner.transform([owner])[0]
-        
-        # Since we don't have the encoders, let's assume the model was trained on the raw values
-        # and will handle the encoding internally
 
         array = np.array([car_name, kms, fuel_type, transmission, owner, year, engine, seats], dtype=object).reshape(1, -1)
-        
-        # Predicting the price
         prediction = model.predict(array)
-        
-        # Return the prediction as a response
-        return str(np.round(prediction[0], 2)) + " Lakhs rs"
+
+        return str(np.round(prediction[0], 2))
     
     except ValueError as ve:
         print(f"A ValueError occurred: {ve}")
@@ -61,4 +48,5 @@ def predict():
         return "An unexpected error occurred. Please try again later."
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
