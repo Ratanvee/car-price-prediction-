@@ -35,7 +35,7 @@ def predict():
         array = np.array([car_name, kms, fuel_type, transmission, owner, year, engine, seats], dtype=object).reshape(1, -1)
         prediction = model.predict(array)
 
-        return str(np.round(prediction[0], 2)) + "Lakhs Rs."
+        return str(np.round(prediction[0], 2)) + " Lakhs Rs."
     
     except ValueError as ve:
         print(f"A ValueError occurred: {ve}")
