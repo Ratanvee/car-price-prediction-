@@ -9,6 +9,41 @@ app = Flask(__name__)
 model = pickle.load(open('templates/model/carPricePredict.pkl', 'rb'))
 car = pd.read_csv('templates/model/car.csv')
 
+from flask import Flask, jsonify, url_for
+
+app = Flask(__name__)
+
+@app.route('/manifest.json')
+def manifest():
+    return jsonify({
+        "name": "My Flask PWA",
+        "short_name": "FlaskPWA",
+        "start_url": url_for('index'),  # Set dynamically
+        "display": "standalone",
+        "background_color": "#ffffff",
+        "theme_color": "#4CAF50",
+        "icons": [
+            {
+                "src": url_for('static', filename='icons/icon-192x192.png'),
+                "sizes": "192x192",
+                "type": "image/png"
+            },
+            {
+                "src": url_for('static', filename='icons/icon-512x512.png'),
+                "sizes": "512x512",
+                "type": "image/png"
+            }
+        ]
+    })
+
+# @app.route('/')
+# def home():
+#     return "Welcome to the PWA Home Page"
+
+# if __name__ == '__main__':
+#     app.run(debug=True)
+
+
 @app.route('/')
 def index():
     car_name = sorted(car['car_name'].unique())
@@ -47,6 +82,47 @@ def predict():
         print(f"An unexpected error occurred: {e}")
         return "An unexpected error occurred. Please try again later."
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
+#     port = int(os.environ.get('PORT', 5000))
+#     app.run(host='0.0.0.0', port=port,debug=True, ssl_context='adhoc', ssl_context=('/path/to/fullchain.pem', '/path/to/privkey.pem'))
+
+# if __name__ == '__main__':
+#     app.run(debug=True, ssl_context='adhoc')
+
+# if __name__ == '__main__':
+#     app.run(debug=True, ssl_context=('/path/to/fullchain.pem', '/path/to/privkey.pem'))
+
+if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+
+    app.run(host='0.0.0.0', port=port, debug=True, ssl_context='adhoc')
+
+
+# ssl_cert_path = 'C:/Users/ratan/certificates/fullchain.pem'  # Update with the correct path
+# ssl_key_path = 'C:/Users/ratan/certificates/privkey.pem'     # Update with the correct path
+
+# if __name__ == '__main__':
+#     port = int(os.environ.get('PORT', 5000))
+
+#     app.run(host='0.0.0.0', port=port, debug=True, ssl_context=(ssl_cert_path, ssl_key_path))
+
+
+# from flask import Flask
+# from flask_talisman import Talisman
+
+# # app = Flask(__name__)
+# Talisman(app)
+
+# if __name__ == '__main__':
+#     app.run(host='0.0.0.0', port=5000, debug=True)
+
+
+
+
+
+# if __name__ == '__main__':
+#     port = int(os.environ.get('PORT', 5000))
+#     app.run(host='0.0.0.0', port=port, debug=True, ssl_context=('/path/to/fullchain.pem', '/path/to/privkey.pem'))
+
+
+

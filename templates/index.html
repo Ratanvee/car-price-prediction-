@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car price predict</title>
     <link rel="stylesheet" href="static/css/style.css">
+    <!-- <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <link rel="manifest" href="{{ url_for('manifest') }}"> -->
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+
+
+
 </head>
 
 <body>
@@ -103,6 +109,19 @@
     </div>
 
     <script src="static/script/script.js"></script>
+
+
+    <script>
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/static/service-worker.js')
+                .then(function () {
+                    console.log('Service Worker Registered');
+                });
+        }
+
+
+    </script>
 </body>
 
 </html>
